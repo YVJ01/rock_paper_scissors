@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+    
+</head>
+    
+<body>
+<h1>  Rock Paper Scissor </h1>    
+<p id="comp"></p>
+<p id="human"></p>    
+</body>    
+    
+<script>
+    var arr = ["rock","paper","scissor"];
+     var player_selection;
+    var computer_selection = arr[Math.floor(Math.random()*arr.length)];
+   console.log(computer_selection);
+    var score = 0;
+    game();
+    
+    function game()
+    {
+    for(var i=1;i<=5;i++)
+     {
+    playRound(computer_selection,player_selection);
+     }
+     if(score==5)
+      {
+           document.getElementById("human").innerHTML = "You Win!!!";
+      }
+        else
+            {
+                  document.getElementById("human").innerHTML = "Better Luck Next Time!!!"; 
+            }
+    }
+    
+    function playRound(computer_selection,player_selection){
+         var input = prompt("Rock,Paper,Scissor");
+         player_selection= input.toLowerCase();
+         console.log(player_selection);
+        if((computer_selection == "rock" && player_selection == "paper")||(computer_selection == "paper" && player_selection == "scissor")||(computer_selection == "scissor" && player_selection == "stone"))
+            {
+                score++;
+            }
+        else if(computer_selection == "rock" && player_selection == "scissor")
+             {
+                document.getElementById("human").innerHTML = "You Lose!!! Rock beats Scissor";
+            }
+        else if(computer_selection == "paper" && player_selection == "rock")
+             {
+                document.getElementById("human").innerHTML = "You Lose!!! Paper beats Rock";
+            }
+        else if(computer_selection == "scissor" && player_selection == "paper")
+             {
+                document.getElementById("human").innerHTML = "You Lose!!!Scissor  beats Paper";
+            }
+        else
+             {
+                document.getElementById("human").innerHTML = " ";
+            }
+    }
+</script>    
